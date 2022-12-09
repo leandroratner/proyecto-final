@@ -1,0 +1,23 @@
+[33mcommit 43908638378e55089cdf74bd8fd321bddbbd3a6a[m[33m ([m[1;36mHEAD -> [m[1;32msecondary[m[33m)[m
+Author: Leandro Ratner <leandro.ratner@gmail.com>
+Date:   Sat Dec 3 03:09:00 2022 -0300
+
+    Agrego otro cambio a main.py
+
+[33mcommit b43a1c238a39605382993c82afa8b55c44e16482[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: leandroratner <119637756+leandroratner@users.noreply.github.com>
+Date:   Thu Dec 1 22:50:26 2022 -0300
+
+    Update README.md
+
+[33mcommit 47847e653f502bd2d710b4324ab8f42c02d0f384[m
+Author: Leandro Ratner <leandro.ratner@gmail.com>
+Date:   Thu Dec 1 22:27:15 2022 -0300
+
+    Agrego archivo main.py
+
+[33mcommit 6b0fae06718d134b093419f3b273547d6e18802a[m
+Author: leandroratner <119637756+leandroratner@users.noreply.github.com>
+Date:   Thu Dec 1 21:41:47 2022 -0300
+
+    Initial commit
