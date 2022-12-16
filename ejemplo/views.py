@@ -1,13 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from ejemplo.models import Familiar
+from ejemplo.models import Familiar, Vehiculo, Mascota, Vacaciones
 from ejemplo.models import MVPFamiliares
-from ejemplo.forms import Buscar, FamiliarForm # <--- NUEVO IMPORT
+from ejemplo.forms import Buscar, FamiliarForm, BuscarMascota, BuscarVacaciones, BuscarVehiculo # <--- NUEVO IMPORT
 from django.views import View # <-- NUEVO IMPORT 
 from django.views.generic import DetailView, ListView, CreateView, DeleteView, UpdateView
-
-
-
-
 
 def index(request):
     return render(request, "ejemplo/saludar.html")
@@ -124,3 +120,99 @@ class FamiliarActualizar(UpdateView):
     model = Familiar
     success_url = "/success_update_messagge"
     fields = ["nombre", "direccion", "numero_pasaporte"]
+
+
+
+
+class VehiculoList(ListView):
+    model = Vehiculo
+class VehiculoCrear(CreateView):
+    model = Vehiculo
+    success_url = "/panel-vehiculo"
+    fields = ["tipo", "color", "año_modelo"]
+class VehiculoBorrar(DeleteView):
+    model = Vehiculo
+    success_url = "/panel-vehiculo"
+class VehiculoActualizar(UpdateView):
+    model = Vehiculo
+    success_url = "/panel-vehiculo"
+    fields = ["tipo", "color", "año_modelo"]
+
+class MascotaList(ListView):
+    model = Mascota
+class MascotaCrear(CreateView):
+    model = Mascota
+    success_url = "/panel-mascota"
+    fields = ["tipo_animal", "edad"]
+class MascotaBorrar(DeleteView):
+    model = Mascota
+    success_url = "/panel-mascota"
+class MascotaActualizar(UpdateView):
+    model = Mascota
+    success_url = "/panel-mascota"
+    fields = ["tipo_animal", "edad"]
+
+class VacacionesList(ListView):
+    model = Vacaciones
+class VacacionesCrear(CreateView):
+    model = Vacaciones
+    success_url = "/panel-vacaciones"
+    fields = ["destino", "dias_de_estadia"]
+class VacacionesBorrar(DeleteView):
+    model = Vacaciones
+    success_url = "/panel-vacaciones"
+class VacacionesActualizar(UpdateView):
+    model = Vacaciones
+    success_url = "/panel-vacaciones"
+    fields = ["destino", "dias_de_estadia"]
+
+class BuscarVacaciones(View):
+    form_class = BuscarVacaciones
+    template_name = 'ejemplo/vacaciones_buscar.html'
+    initial = {"nombre":""}
+    def get(self, request):
+        form = self.form_class(initial=self.initial)
+        return render(request, self.template_name, {'form':form})
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            nombre = form.cleaned_data.get("nombre")
+            lista_vacaciones = Vacaciones.objects.filter(nombre__icontains=nombre).all() 
+            form = self.form_class(initial=self.initial)
+            return render(request, self.template_name, {'form':form, 
+                                                        'lista_vacaciones':lista_vacaciones})
+        return render(request, self.template_name, {"form": form})
+
+class BuscarVehiculo(View):
+    form_class = BuscarVehiculo
+    template_name = 'ejemplo/vehiculo_buscar.html'
+    initial = {"nombre":""}
+    def get(self, request):
+        form = self.form_class(initial=self.initial)
+        return render(request, self.template_name, {'form':form})
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            nombre = form.cleaned_data.get("nombre")
+            lista_vehiculos = Vehiculo.objects.filter(nombre__icontains=nombre).all() 
+            form = self.form_class(initial=self.initial)
+            return render(request, self.template_name, {'form':form, 
+                                                        'lista_vehiculos':lista_vehiculos})
+        return render(request, self.template_name, {"form": form})
+
+class BuscarMascota(View):
+    form_class = BuscarMascota
+    template_name = 'ejemplo/mascotas_buscar.html'
+    initial = {"nombre":""}
+    def get(self, request):
+        form = self.form_class(initial=self.initial)
+        return render(request, self.template_name, {'form':form})
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            nombre = form.cleaned_data.get("nombre")
+            lista_mascotas = Mascota.objects.filter(nombre__icontains=nombre).all() 
+            form = self.form_class(initial=self.initial)
+            return render(request, self.template_name, {'form':form, 
+                                                        'lista_mascotas':lista_mascotas})
+        return render(request, self.template_name, {"form": form})

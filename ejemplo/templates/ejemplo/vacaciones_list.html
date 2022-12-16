@@ -1,0 +1,18 @@
+{% extends 'ejemplo/base_PE.html'%}
+
+{% block titulo1 %} Destino de vacaciones!! {% endblock %}
+
+{% block cierre %}
+
+
+
+    <ul>
+
+        {% block buscar %} {% endblock %}
+
+        {% for vacaciones in object_list %}
+            <li>Id: {{vacaciones.id}}. Destino: {{vacaciones.destino}}, Días de estadía: {{vacaciones.dias_de_estadia}}</li>
+        {% endfor %}    
+    </ul>
+{% endblock %}
+    

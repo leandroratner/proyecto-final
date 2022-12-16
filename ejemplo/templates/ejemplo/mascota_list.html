@@ -1,0 +1,17 @@
+{% extends 'ejemplo/base_PE.html'%}
+
+{% block titulo1 %} Lista de Mascotas {% endblock %}
+
+{% block cierre %}
+<ul>
+
+{% block buscar %}  {% endblock %}
+
+{% for mascota in object_list %}
+    <li> Id: {{mascota.id}}, Tipo de Animal: {{mascota.tipo_animal}}, Edad: {{mascota.edad}} </li>
+{% endfor %}    
+</ul>
+{% endblock %}
+
+
+

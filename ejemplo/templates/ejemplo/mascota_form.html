@@ -7,11 +7,12 @@
     <title>Document</title>
 </head>
 <body>
+    <h1> Mi Pagina de Mascotas </h1>
 
     <form method="post">
         {% csrf_token %}
-        "¿ Estás seguro de borrar el familiar {{ object }} ?"
-        <input type="submit" value="SI">
+        {{form.as_p}}
+        <input type="submit" value="agregar">
     </form>
 
 </body>

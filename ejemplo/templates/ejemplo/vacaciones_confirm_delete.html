@@ -1,0 +1,12 @@
+{% extends 'ejemplo/base_PE.html' %}
+
+
+
+<form method="post">
+    {% csrf_token %}
+    "¿ Estás seguro de borrar las vacaciones {{ object }} ?"
+    <input type="submit" value="SI">
+</form>
+
+</body>
+</html>

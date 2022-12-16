@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+  </head>
+  <body>
+      <h1>Buscar vacaciones por destino</h1>
+    
+      <form action="/panel-vacaciones/buscar" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+      </form>
+
+      {% for vacacion in lista_vacaciones %}
+      <ul>
+          <li>Id: {{vacacion.id}}, Destino: {{vacacion.destino}}, Días de estadía: {{vacacion.dias_de_estadia}}</li>
+      </ul>
+      {% endfor %}
+
+  </body>
+  </html>

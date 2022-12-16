@@ -17,7 +17,12 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
 from ejemplo.views import (index, saludar_a, sumar, buscar, monstrar_familiares, mostrar_familiaresMVP, 
-                                                    BuscarFamiliar, AltaFamiliar, ActualizarFamiliar, FamiliarList, FamiliarCrear, FamiliarBorrar, FamiliarActualizar)
+                                                    BuscarFamiliar, AltaFamiliar, ActualizarFamiliar,
+                                                     FamiliarList, FamiliarCrear, FamiliarBorrar, FamiliarActualizar,
+                                                     VehiculoList, VehiculoCrear, VehiculoActualizar, VehiculoBorrar,
+                                                     MascotaList, MascotaCrear, MascotaActualizar, MascotaBorrar,
+                                                     VacacionesList, VacacionesCrear, VacacionesActualizar, VacacionesBorrar,
+                                                     BuscarVacaciones, BuscarMascota, BuscarVehiculo)
 
 
 urlpatterns = [
@@ -37,4 +42,19 @@ urlpatterns = [
     path('panel-familia/<int:pk>/borrar', FamiliarBorrar.as_view()),
     path('panel-familia/<int:pk>/actualizar', FamiliarActualizar.as_view()),
     path('success_update_messagge/', TemplateView.as_view(template_name="ejemplo/success_update_messagge")),
+    path('panel-vehiculo/', VehiculoList.as_view()),
+    path('panel-vehiculo/crear', VehiculoCrear.as_view()),
+    path('panel-vehiculo/<int:pk>/borrar', VehiculoBorrar.as_view()),
+    path('panel-vehiculo/<int:pk>/actualizar', VehiculoActualizar.as_view()),
+    path('panel-mascota/', MascotaList.as_view()),
+    path('panel-mascota/crear', MascotaCrear.as_view()),
+    path('panel-mascota/<int:pk>/borrar', MascotaBorrar.as_view()),
+    path('panel-mascota/<int:pk>/actualizar', MascotaActualizar.as_view()),
+    path('panel-vacaciones/', VacacionesList.as_view()),
+    path('panel-vacaciones/crear', VacacionesCrear.as_view()),
+    path('panel-vacaciones/<int:pk>/borrar', VacacionesBorrar.as_view()),
+    path('panel-vacaciones/<int:pk>/actualizar', VacacionesActualizar.as_view()),
+    path('vacaciones/buscar', BuscarVacaciones.as_view()),
+    path('vehiculo/buscar', BuscarVehiculo.as_view()),
+    path('mascota/buscar', BuscarMascota.as_view()),
 ]

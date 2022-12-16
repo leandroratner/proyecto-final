@@ -1,0 +1,16 @@
+{% extends 'ejemplo/base_PE.html'%}
+
+{% block titulo1 %} Lista de vehiculos!! {% endblock %}
+
+{% block cierre %}
+<ul>
+
+
+{% block buscar %} {% endblock %}
+
+{% for vehiculo in object_list %}
+    <li>Id: {{vehiculo.id}}. Tipo: {{vehiculo.tipo}}. Color: {{vehiculo.color}}. Año del modelo: {{vehiculo.año_modelo}}</li>
+{% endfor %}    
+</ul>
+{% endblock %}
+

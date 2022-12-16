@@ -7,12 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-
-    <form method="post">
-        {% csrf_token %}
-        "¿ Estás seguro de borrar el familiar {{ object }} ?"
-        <input type="submit" value="SI">
-    </form>
-
+    <h1> {% block titulo1 %} {% endblock %}</h1> 
+        {% block cierre %} 
+            {% block buscar %} {% endblock %}
+        {% endblock %}
+        
 </body>
 </html>

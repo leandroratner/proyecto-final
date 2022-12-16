@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
 
+<body>
+    <h1> Mi Pagina de Vacaciones </h1> 
+    
+   
     <form method="post">
         {% csrf_token %}
-        "¿ Estás seguro de borrar el familiar {{ object }} ?"
-        <input type="submit" value="SI">
+        {{form.as_p}}
+        <input type="submit" value="agregar">
     </form>
 
 </body>
