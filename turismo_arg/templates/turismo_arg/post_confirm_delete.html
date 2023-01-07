@@ -1,0 +1,12 @@
+{% extends 'turismo_arg/base.html' %}
+
+{% block contenido %}
+
+<h1>"¿ Estás seguro de borrar {{ object.titulo }} ?"</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="submit" value="SI">
+</form>
+
+{% endblock %}

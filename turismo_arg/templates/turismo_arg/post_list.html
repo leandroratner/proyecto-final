@@ -1,0 +1,26 @@
+{% extends 'turismo_arg/base.html' %}
+
+{% block contenido %}
+{% if user.is_authenticated %}
+<a href="{% url 'turismo-arg-crear' %}">Crear Post</a>
+<a href="{% url 'turismo-arg-mensajes-listar' %}">Ver Mensajes</a>
+{% endif %}
+{% if user.avatar.imagen %}
+<a href="{% url 'turismo-arg-avatares-actualizar' user.id %}">Actualizar Avatar</a>
+<a href="{% url 'turismo-arg-users-actualizar' user.id %}">Actualizar Perfil</a>
+{% endif %}
+<ul> 
+{% for post in object_list %}
+    <li>
+        {{post.publicado_el}} - - {{ post.titulo }}
+        {% if user.is_authenticated %}
+             <a href="{% url 'turismo-arg-borrar' post.id %}">Borrar</a>
+             <a href="{% url 'turismo-arg-actualizar' post.id %}">Actualizar</a>
+        {% endif %}
+        <a href="{% url 'turismo-arg-detalle' post.id %}">Ver Detalle</a>
+    
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}
+

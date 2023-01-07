@@ -13,6 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
@@ -23,6 +25,8 @@ from ejemplo.views import (index, saludar_a, sumar, buscar, monstrar_familiares,
                                                      MascotaList, MascotaCrear, MascotaActualizar, MascotaBorrar,
                                                      VacacionesList, VacacionesCrear, VacacionesActualizar, VacacionesBorrar,
                                                      BuscarVacaciones, BuscarMascota, BuscarVehiculo)
+from turismo_arg.views import (index, PostList, PostCrear, PostDetalle, PostActualizar, PostBorrar, AvatarActualizar,
+                               UserSignUp, UserLogin, UserLogout, UserActualizar, MensajeDetalle, MensajeListar, MensajeCrear, MensajeBorrar)                                                 
 
 
 urlpatterns = [
@@ -57,4 +61,21 @@ urlpatterns = [
     path('vacaciones/buscar', BuscarVacaciones.as_view()),
     path('vehiculo/buscar', BuscarVehiculo.as_view()),
     path('mascota/buscar', BuscarMascota.as_view()),
+    path('turismo-arg/', index, name= 'turismo-arg-index'),
+    path('turismo-arg/<int:pk>/detalle', PostDetalle.as_view(), name= "turismo-arg-detalle"),
+    path('turismo-arg/listar', PostList.as_view(), name= "turismo-arg-listar"),
+    path('turismo-arg/crear', PostCrear.as_view(), name= "turismo-arg-crear"),
+    path('turismo-arg/<int:pk>/borrar', PostBorrar.as_view(), name= "turismo-arg-borrar"),
+    path('turismo-arg/<int:pk>/actualizar', PostActualizar.as_view(), name= "turismo-arg-actualizar"),
+    path('turismo-arg/signup', UserSignUp.as_view(), name="turismo-arg-signup"),
+    path('turismo-arg/login/', UserLogin.as_view(), name="turismo-arg-login"),
+    path('turismo-arg/logout/', UserLogout.as_view(), name="turismo-arg-logout"),
+    path('turismo-arg/avatares/<int:pk>/actualizar/', AvatarActualizar.as_view(), name= "turismo-arg-avatares-actualizar"),
+    path('turismo-arg/users/<int:pk>/actualizar/', UserActualizar.as_view(), name= "turismo-arg-users-actualizar"),
+    path('turismo-arg/mensajes/crear/', MensajeCrear.as_view(), name= "turismo-arg-mensajes-crear"),
+    path('turismo-arg/mensajes/<int:pk>/detalle', MensajeDetalle.as_view(), name= "turismo-arg-mensajes-detalle"),
+    path('turismo-arg/mensajes/listar/', MensajeListar.as_view(), name= "turismo-arg-mensajes-listar"),
+    path('turismo-arg/mensajes/<int:pk>/borrar', MensajeBorrar.as_view(), name= "turismo-arg-mensajes-borrar"),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
